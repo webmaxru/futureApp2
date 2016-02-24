@@ -1,0 +1,19 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>firebaseAngular</ion-title>
+</ion-navbar>
+
+<ion-content padding class="firebase-angular">
+
+  <ion-slides pager>
+
+    <ion-slide *ngFor="#post of posts | async">
+      <h2 class="slide-title" [innerHTML]="post.name"></h2>
+      <p [innerHTML]="post.message"></p>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>

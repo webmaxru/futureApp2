@@ -1,0 +1,36 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>firebaseEventPipe</ion-title>
+</ion-navbar>
+
+<ion-content padding class="firebase-event-pipe">
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Your name</ion-label>
+      <ion-input type="text" #nameInput (keyup)="onKeyUp($event, nameInput, messageInput)"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Message</ion-label>
+      <ion-input type="text" #messageInput (keyup)="onKeyUp($event, nameInput, messageInput)"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button block (click)="createPost(nameInput, messageInput)">Send</button>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="#post of firebaseUrl | firebaseevent:'child_added'">
+      <ion-icon name="quote" item-left></ion-icon>
+      <h2>{{post.name}}</h2>
+      <p>{{post.message}}</p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
